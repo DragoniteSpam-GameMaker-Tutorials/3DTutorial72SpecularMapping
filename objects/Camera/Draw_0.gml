@@ -33,15 +33,20 @@ vertex_submit(vb_merry, pr_trianglelist, -1);
 
 var t = current_time / 1000 * 60;
 
+texture_set_stage(shader_get_sampler_index(shd_basic_3d_stuff, "samp_specular"), sprite_get_texture(spr_earth_specular, 0));
 matrix_set(matrix_world, matrix_build(250, 360, 16, 0, 0, t, 1, 1, 1));
 vertex_submit(vb_sphere, pr_trianglelist, sprite_get_texture(spr_earth, 0));
 
-
+texture_set_stage(shader_get_sampler_index(shd_basic_3d_stuff, "samp_specular"), sprite_get_texture(spr_specular_checker, 0));
 matrix_set(matrix_world, matrix_build(250, 420, 32, 0, 0, t, 1, 1, 1));
+vertex_submit(vb_sphere, pr_trianglelist, sprite_get_texture(spr_earth, 0));
+
+texture_set_stage(shader_get_sampler_index(shd_basic_3d_stuff, "samp_specular"), sprite_get_texture(spr_mercury, 0));
+matrix_set(matrix_world, matrix_build(250, 480, 64, 0, 0, t, 1, 1, 1));
 vertex_submit(vb_sphere, pr_trianglelist, -1);
 
-
-matrix_set(matrix_world, matrix_build(250, 480, 64, 0, 0, t, 1, 1, 1));
+texture_set_stage(shader_get_sampler_index(shd_basic_3d_stuff, "samp_specular"), -1);
+matrix_set(matrix_world, matrix_build(250, 540, 64, 0, 0, t, 1, 1, 1));
 vertex_submit(vb_sphere, pr_trianglelist, -1);
 
 for (var i = 0, n = array_length(tree_positions); i < n; i++) {
